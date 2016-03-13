@@ -21,5 +21,5 @@ sqlcipher EnMicroMsg.db 'PRAGMA key = "******"; PRAGMA cipher_use_hmac = off; PR
 
 ## Reference of how to decryte the wechat db.
 
-https://www.zhihu.com/collection/20574867
-https://maskray.me/blog/2014-10-14-wechat-export
+https://www.zhihu.com/collection/20574867  
+https://maskray.me/blog/2014-10-14-wechat-export  
