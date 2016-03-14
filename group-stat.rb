@@ -44,6 +44,7 @@ begin
     next unless content
     next if(Time.now - Time.at(time/1000) > 60*60*24*14 )   
     next if content =~ /关键字/       #skip. 这个消息是群主发通告。打卡不应该包含“关键字”。
+    next if content =~ /微信红包/       #skip. 
     
     next if content =~ /^~SEMI_XML~/
 
@@ -77,9 +78,12 @@ begin
 
  output <<  "\n# Activities detail \n"
   activity_detail.each do |record|
-     output <<  "* #{record} \n"
+     output <<  "* #{record} \n\n"
     puts record
   end
+  output <<  "# Source code \n\n"
+  output <<  " [https://github.com/mingoc/wechat-group-stat](https://github.com/mingoc/wechat-group-stat)"
+  
   File.open('stat.html', 'w') { |file|  file.write( '<meta charset="utf-8"> <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" /> <meta http-equiv="Pragma" content="no-cache" /> <meta http-equiv="Expires" content="0" />' +  Kramdown::Document.new(output).to_html) }
 
 

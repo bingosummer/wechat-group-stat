@@ -10,8 +10,9 @@
 - decrypted database and generate the statistics file
 
 ```
-sqlcipher EnMicroMsg.db 'PRAGMA key = "******"; PRAGMA cipher_use_hmac = off; PRAGMA kdf_iter = 4000; ATTACH DATABASE "decrypted_database.db" AS decrypted_database KEY "";SELECT sqlcipher_export("decrypted_database");DETACH DATABASE decrypted_database;' && ruby EnMicroMsg.db  
+sqlcipher EnMicroMsg.db 'PRAGMA key = "******"; PRAGMA cipher_use_hmac = off; PRAGMA kdf_iter = 4000; ATTACH DATABASE "decrypted_database.db" AS decrypted_database KEY "";SELECT sqlcipher_export("decrypted_database");DETACH DATABASE decrypted_database;' && ruby group-stat.rb  
 ```
+
 
 
 - Upload the statistics file to a webserver
