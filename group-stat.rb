@@ -80,6 +80,10 @@ begin
      output <<  "* #{record} \n"
     puts record
   end
+
+  output <<  "\n# Source code \n\n"
+  output <<  "[https://github.com/mingoc/wechat-group-stat](https://github.com/mingoc/wechat-group-stat)  "
+  
   File.open('stat.html', 'w') { |file|  file.write( '<meta charset="utf-8"> <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" /> <meta http-equiv="Pragma" content="no-cache" /> <meta http-equiv="Expires" content="0" />' +  Kramdown::Document.new(output).to_html) }
 
 
