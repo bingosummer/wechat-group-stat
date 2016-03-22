@@ -44,8 +44,7 @@ begin
     next unless content
     next if(Time.now - Time.at(time/1000) > 60*60*24*14 )   
     next if content =~ /关键字/       #skip. 这个消息是群主发通告。打卡不应该包含“关键字”。
-    next if content =~ /微信红包/       #skip. 
-    
+    next if content =~ /微信红包/       #skip.     
     next if content =~ /^~SEMI_XML~/
 
 
@@ -71,8 +70,9 @@ begin
   output <<  "# Activities statistics of Last 2 weeks - Updated on #{Time.now}  \n\n"
   output <<  "| Name |Times| \n"
 
-  activity_stat.sort_by{|k,v| v}.reverse.each do |record|
+  activity_stat.sort_by{|k,v| v}.reverse.each do |record|    
     name=username2name.fetch(record[0], 'xxxx')
+    next if name=='Robot'
     output<< "|#{name} |#{record[1]} | \n "
   end
 
